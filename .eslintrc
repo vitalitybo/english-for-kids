@@ -18,11 +18,12 @@
     }
   },
   "rules":{
-    "linebreak-style": 0
+    "linebreak-style": 0,
+    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["item"] }]
   },
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 2017
   },
-  "parser": "babel-eslint"
+  "parser": "babel-eslint" 
 }
