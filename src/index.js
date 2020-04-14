@@ -1,41 +1,33 @@
-import cards from './modules/cards';
+// import cards from './modules/cards';
+import './styles/styles.css';
+import renderCards from './modules/renderCards';
 
-const images = document.querySelectorAll('.card__image');
-const titles = document.querySelectorAll('.card__title');
-
-for (let [index, title] of Object.entries(titles)) {
-  title.innerHTML = cards[0][+index];
-}
-
-for (let [index, image] of Object.entries(images)) {
-  if (!cards[+index + 1]) break;
-  image.src = `./assets/${cards[+index + 1][+index].image}`;
-  image.alt = cards[+index + 1][+index].word;
-}
+renderCards();
 
 const cardss = document.querySelector('.cards');
-
-cardss.addEventListener('click', startGame);
 
 function startGame(event) {
   event.preventDefault();
 
   if (!event.target.closest('.card')) return;
-  
+
+  const target = event.target.closest('.card');
   const cardsCollection = document.querySelectorAll('.card');
   const index = Array.from(cardsCollection).indexOf(target);
 
   window.localStorage.setItem('index', index);
-  window.location.href('./cards.html');
+  window.location.href = './cards.html';
 }
 
-function playAudio() {
-  const cardsCollection = document.querySelectorAll('.card');
+cardss.addEventListener('click', startGame);
 
-  const target = event.target.closest('.card');
-  const index = Array.from(cardsCollection).indexOf(target);
+// function playAudio(event) {
+//   const cardsCollection = document.querySelectorAll('.card');
 
-  const audio = new Audio(`./assets/${cards[+index + 1][+index].audioSrc}`);
+//   const target = event.target.closest('.card');
+//   const index = Array.from(cardsCollection).indexOf(target);
 
-  audio.play();
-}
+//   const audio = new Audio(`./assets/${cards[+index + 1][+index].audioSrc}`);
+
+//   audio.play();
+// }
