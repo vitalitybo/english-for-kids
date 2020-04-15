@@ -7,6 +7,7 @@
 }
 
 .card {
+  position: relative;
   display: inline-block;
   margin: 20px 20px;
   width: 300px;
@@ -38,4 +39,39 @@
   height: 200px;
   border: 10px solid white;
   border-radius: 50%;
+}
+
+.card__front,
+.card__back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform .5s ease;
+}
+
+.card__front {
+  transform: perspective(200px) rotateX(0);
+}
+
+.card__back {
+  transform: perspective(200px) rotateX(0);
+}
+
+.card__front:hover {
+  transform: perspective(200px) rotateX(180deg);
+}
+
+.card__back:hover {
+  transform: perspective(200px) rotateX(180deg);
+}
+
+.card__front img,
+.card__back img {
+  width: 100%;
+  height: auto;
 }
