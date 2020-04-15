@@ -1,0 +1,1 @@
+import { playMode } from '../index';
