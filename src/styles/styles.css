@@ -11,18 +11,24 @@
   display: inline-block;
   margin: 20px 20px;
   width: 300px;
-  height: 300px;
+  height: 240px;
   text-align: center;
   border-radius: 5px;
-  background-image: linear-gradient(45deg, #63e2ff, #d585ff, #63e2ff);
   background-position-y: -125px;
   background-repeat: no-repeat;
+}
+
+.card_main-page {
   box-shadow: 0 5px 10px -5px #010101;
+  background-image: linear-gradient(45deg, #63e2ff, #d585ff, #63e2ff);
+}
+
+.card_main-page:hover {
+  background-image: linear-gradient(45deg, #d585ff, #63e2ff, #d585ff);
+  box-shadow: 0 5px 20px -5px #010101;
 }
 
 .card:hover {
-  box-shadow: 0 5px 20px -5px #010101;
-  background-image: linear-gradient(45deg, #d585ff, #63e2ff, #d585ff);
   cursor: pointer;
 }
 
@@ -30,13 +36,26 @@
   display: block;
   margin: 0 auto;
   width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2em;
+  font-weight: 600;
+  color: #b960e9;
+}
+
+.card__front .card__title {
+  font-style: italic;
 }
 
 .card__image {
-  display: block;
-  margin: 20px auto;
+  width: 100%;
+  height: auto;
+}
+
+.card__image_main-page {
   width: 200px;
   height: 200px;
+  display: block;
+  margin: 20px auto;
   border: 10px solid white;
   border-radius: 50%;
 }
@@ -52,26 +71,40 @@
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transition: transform .5s ease;
+  box-shadow: 0 5px 10px -5px #010101;
 }
 
 .card__front {
-  transform: perspective(200px) rotateX(0);
+  transform: perspective(600px) rotateY(180deg);
 }
 
 .card__back {
-  transform: perspective(200px) rotateX(0);
+  transform: perspective(600px) rotateY(0);
 }
 
-.card__front:hover {
-  transform: perspective(200px) rotateX(180deg);
+.card:hover .card__front.rotatable {
+  transform: perspective(600px) rotateY(0deg);
 }
 
-.card__back:hover {
-  transform: perspective(200px) rotateX(180deg);
+.card:hover .card__back.rotatable {
+  transform: perspective(600px) rotateY(-180deg);
 }
 
-.card__front img,
-.card__back img {
-  width: 100%;
-  height: auto;
+.rotate-button {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  border: none;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background: url(/../assets/img/repeat.svg) no-repeat;
+}
+
+.rotate-button:hover {
+  filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5);
+}
+
+.rotate-button:focus {
+  outline: 0;
 }

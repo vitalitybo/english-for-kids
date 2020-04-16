@@ -92,7 +92,7 @@ module.exports = {
         }, 'css-loader']
       },
       {
-        test: /\.jpg$/,
+        test: /\.jpg$|\.svg$/,
         loader: 'url-loader'
       },
       {
