@@ -1,25 +1,30 @@
 import renderCards from './renderCards';
+import initialCardsRender from './initialCardsRender';
 
 export default function startGame(event) {
   event.preventDefault();
 
   if (!event.target.closest('.card')) return;
 
-  const target = event.target.closest('.card');
-  const cardsCollection = document.querySelectorAll('.card');
-  const index = Array.from(cardsCollection).indexOf(target);
+  const target = event.target.closest('.card_main-page');
 
-  renderCards(index + 1);
+  if (target) {
+    const cardsCollection = document.querySelectorAll('.card_main-page');
+    const index = Array.from(cardsCollection).indexOf(target);
 
-  // const toMainButton = document.querySelector('.button_to-main-page');
+    renderCards(index + 1);
+  }
 
-  // const toMainHandler = () => {
-  //   initialCardsRender();
-  //   toMainButton.style.hidden = true;
-  // };
+  const toMainButton = document.querySelector('.button_to-main-page');
+  toMainButton.hidden = false;
 
-  // toMainButton.addEventListener('click', toMainHandler);
+  const toMainHandler = () => {
+    initialCardsRender();
+    toMainButton.hidden = true;
+  };
 
-  const cards = document.querySelector('.cards');
-  cards.removeEventListener('click', startGame);
+  toMainButton.addEventListener('click', toMainHandler);
+
+  // const cards = document.querySelector('.cards');
+  // cards.removeEventListener('click', startGame);
 }

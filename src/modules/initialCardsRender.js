@@ -1,5 +1,4 @@
 import cards from './cards';
-import startGame from './startGame';
 
 export default function initialCardsRender() {
   const CARD_CATEGORIES = cards[0];
@@ -18,6 +17,4 @@ export default function initialCardsRender() {
         <figcaption class="card__title">${cards[0][i]}</figcaption>
       </figure>`;
   }
-
-  cardsElement.addEventListener('click', startGame);
 }

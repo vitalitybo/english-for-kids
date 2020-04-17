@@ -1,17 +1,22 @@
 import cards from './cards';
 import rotateCard from './rotateCard';
+import gameMode from './isTrainingMode';
 
 export default function renderCards(index = 0) {
   const cardsElement = document.querySelector('.cards');
   const CARDS_CATEGORY_LENGTH = cards[index].length;
   const cardsCollection = Array.from(document.querySelectorAll('.card'));
-  const rotateButtonHTML = '<button class="rotate-button"></button>';
+  let rotateButtonHTML = '<button class="rotate-button"></button>';
+  let figcaption = '';
+  const figcaptionEnd = '</figcaption>';
 
-  // if (isTrainingMode) {
-  // rotateButtonHTML = '<button class="rotate-button" onclick="rotate()"></button>';
-  // } else {
-  //   rotateButtonHTML = '';
-  // }
+  if (gameMode.trainingMode) {
+    rotateButtonHTML = '<button class="rotate-button"></button>';
+    figcaption = '<figcaption class="card__title">';
+  } else {
+    rotateButtonHTML = '';
+    figcaption = '';
+  }
 
   if (cardsCollection.length) {
     cardsCollection.forEach((item) => item.remove());
@@ -23,11 +28,11 @@ export default function renderCards(index = 0) {
         <div class="card__back">
           <img src="./assets/${cards[index][i].image}" alt="${cards[index][i].word}" class="card__image">
           ${rotateButtonHTML}
-          <figcaption class="card__title" hidden>${cards[index][i].word.toUpperCase()}</figcaption>
+          ${figcaption ? figcaption + cards[index][i].word + figcaptionEnd : figcaption}
         </div>
         <div class="card__front">
           <img src="./assets/${cards[index][i].image}" alt="${cards[index][i].word}" class="card__image">
-          <figcaption class="card__title">${cards[index][i].translation.toUpperCase()}</figcaption>
+          <figcaption class="card__title">${cards[index][i].translation}</figcaption>
         </div>
       </figure>`;
   }
