@@ -17,9 +17,9 @@
       }
     }
   },
-  "rules":{
+  "rules": {
     "linebreak-style": 0,
-    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["item"] }]
+    "no-param-reassign": 0
   },
   "parserOptions": {
     "sourceType": "module",
