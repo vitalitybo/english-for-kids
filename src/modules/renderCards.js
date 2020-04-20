@@ -4,18 +4,18 @@ import gameMode from './isTrainingMode';
 
 export default function renderCards(index = 0) {
   const cardsElement = document.querySelector('.cards');
+  const cardsCollection = document.querySelectorAll('.card');
+  let playingClass = 'card_playing';
+  let cardFooterPlayModeClass = 'card__footer_play-mode';
+
   const CARDS_CATEGORY_LENGTH = cards[index].length;
-  const cardsCollection = Array.from(document.querySelectorAll('.card'));
-  let rotateButtonHTML = '<button class="rotate-button"></button>';
-  let figcaption = '';
-  const figcaptionEnd = '</figcaption>';
 
   if (gameMode.trainingMode) {
-    rotateButtonHTML = '<button class="rotate-button"></button>';
-    figcaption = '<figcaption class="card__title">';
+    playingClass = '';
+    cardFooterPlayModeClass = '';
   } else {
-    rotateButtonHTML = '';
-    figcaption = '';
+    playingClass = 'card_playing';
+    cardFooterPlayModeClass = 'card__footer_play-mode';
   }
 
   if (cardsCollection.length) {
@@ -24,37 +24,31 @@ export default function renderCards(index = 0) {
 
   for (let i = 0; i < CARDS_CATEGORY_LENGTH; i += 1) {
     cardsElement.innerHTML += `
-      <figure class="card">
+      <figure class="card card_play-mode ${playingClass}">
         <div class="card__back">
           <img src="./assets/${cards[index][i].image}" alt="${cards[index][i].word}" class="card__image">
-          ${rotateButtonHTML}
-          ${figcaption ? figcaption + cards[index][i].word + figcaptionEnd : figcaption}
+          <footer class="card__footer ${cardFooterPlayModeClass}">
+            <button class="rotate-button"></button>
+            <figcaption class="card__title">${cards[index][i].word}</figcaption>
+          </footer>
         </div>
         <div class="card__front">
           <img src="./assets/${cards[index][i].image}" alt="${cards[index][i].word}" class="card__image">
-          <figcaption class="card__title">${cards[index][i].translation}</figcaption>
+          <footer class="card__footer ${cardFooterPlayModeClass}">
+           <figcaption class="card__title">${cards[index][i].translation}</figcaption>
+          </footer>
         </div>
       </figure>`;
   }
+
+  const cardsHandler = (event) => {
+    event.preventDefault();
+  };
+
+  cardsElement.addEventListener('click', cardsHandler);
 
   const rotateButtons = document.querySelectorAll('.rotate-button');
   rotateButtons.forEach((button) => {
     button.addEventListener('click', rotateCard);
   });
-
-  // isRendered = true;
-  // const images = document.querySelectorAll('.card__image');
-  // const titles = document.querySelectorAll('.card__title');
-
-
-  // titles.forEach((item, index) => {
-  //   item.innerHTML = cards[0][+index];
-  // });
-
-  // images.forEach((item, index) => {
-  //   if (!cards[+index + 1]) return;
-
-  //   item.src = `./assets/${cards[+index + 1][+index].image}`;
-  //   item.alt = cards[+index + 1][+index].word;
-  // });
 }

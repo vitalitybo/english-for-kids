@@ -1,10 +1,10 @@
 .main {
-
+  margin: 0 auto;
 }
 
 .cards {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   min-width: 320px;
   margin: 20px auto;
@@ -14,22 +14,33 @@
 .card {
   position: relative;
   display: inline-block;
-  margin: 40px 20px;
-  width: 300px;
-  height: 240px;
+  margin: 20px 20px;
+  width: 330px;
+  height: 260px;
   text-align: center;
   border-radius: 5px;
   background-position-y: -125px;
   background-repeat: no-repeat;
+  transition: .3s ease-out;
+}
+
+.card_playing {
+  width: 350px;
+  height: 233px;
+}
+
+.card_playing .rotate-button {
+  display: none;
 }
 
 .card_main-page {
+  height: 310px;
   box-shadow: 0 5px 10px -5px #010101;
-  background-image: linear-gradient(90deg, #63e2ff, #d585ff, #63e2ff);
+  background-image: linear-gradient(90deg, #63e2ff, #63e2ff);
 }
 
-.card_main-page:hover {
-  background-image: linear-gradient(0deg, #d585ff, #63e2ff, #d585ff);
+.card_main-page_play-mode {
+  background-image: linear-gradient(0deg, #F44336, #F44336);
   box-shadow: 0 5px 20px -5px #010101;
 }
 
@@ -65,8 +76,7 @@
   border-radius: 50%;
 }
 
-.card__front,
-.card__back {
+.card__front, .card__back {
   position: absolute;
   top: 0;
   left: 0;
@@ -96,7 +106,12 @@
   transform: perspective(600px) rotateY(-180deg);
 }
 
+.card__footer_play-mode {
+  display: none;
+}
+
 .rotate-button {
+  display: inline-block;
   position: absolute;
   right: 10px;
   bottom: 5px;
@@ -115,21 +130,124 @@
   outline: 0;
 }
 
-.button_to-main-page {
-  margin: 50px 0 0 20px;
-  width: 300px;
-  height: 40px;
+.button {
   cursor: pointer;
   border: none;
   border-radius: 20px;
-  background-color: #deb0f7;
+  background-color: #ffda05;
   outline: none;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 1.2em;
+  transition: .3s ease-out;
   text-transform: uppercase;
   /* text-shadow: 0 0 15px #000; */
   letter-spacing: 2px;
   color: #03afc2;
-  box-shadow: 0 2px 3px #2f0000;
+}
+
+.button_to-main-page, .button_start-game {
+  margin: 15px 0 0 35px;
+  width: 300px;
+  height: 40px;
+}
+
+.button_start-game {
+  display: block;
+  margin: 30px auto;
+}
+
+.button_training-mode {
+  display: none;
+}
+
+.button_to-main-page:hover {
+  background-color: #fff349;
+  box-shadow: 0 1px 3px #949494;
+}
+
+.button_game-mode {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.toggle-button {
+  position: relative;
+  top: 50%;
+  width: 74px;
+  height: 36px;
+  overflow: hidden;
+}
+
+.toggle-button.r, .toggle-button.r .layer {
+  border-radius: 100px;
+}
+
+.game-mode_checkbox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.knobs {
+  z-index: 2;
+}
+
+.layer {
+  width: 100%;
+  background-color: #ebf7fc;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+
+.toggle-button .knobs:before, .toggle-button .knobs:after {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 58px;
+  height: 10px;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 0.8em;
+  padding: 9px 4px;
+  background-color: #03A9F4;
+  border-radius: 25px;
+  transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+}
+
+.toggle-button .knobs:before {
+  content: 'Train';
+}
+
+.toggle-button .knobs:after {
+  content: 'Play';
+}
+
+.toggle-button .knobs:after {
+  top: -28px;
+  right: 4px;
+  left: auto;
+  background-color: #F44336;
+}
+
+.game-mode_checkbox:checked+.knobs:before {
+  top: -28px;
+}
+
+.game-mode_checkbox:checked+.knobs:after {
+  top: 4px;
+}
+
+.game-mode_checkbox:checked~.layer {
+  background-color: #fcebeb;
 }

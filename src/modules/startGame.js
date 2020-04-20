@@ -16,11 +16,13 @@ export default function startGame(event) {
   }
 
   const toMainButton = document.querySelector('.button_to-main-page');
+  const startButton = document.querySelector('.button_start-game');
   toMainButton.hidden = false;
 
   const toMainHandler = () => {
     initialCardsRender();
     toMainButton.hidden = true;
+    startButton.style.display = 'none';
   };
 
   toMainButton.addEventListener('click', toMainHandler);

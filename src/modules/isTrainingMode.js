@@ -1,5 +1,6 @@
-const isTrainingMode = {
-  trainingMode: false,
+const states = {
+  trainingMode: true,
+  locked: false,
 };
 
-export default isTrainingMode;
+export default states;
