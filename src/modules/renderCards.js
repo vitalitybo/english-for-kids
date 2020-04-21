@@ -1,19 +1,20 @@
 import cards from './cards';
-import rotateCard from './rotateCard';
-import gameMode from './isTrainingMode';
+import statesObj from './statesObj';
 
 export default function renderCards(index = 0) {
   const cardsElement = document.querySelector('.cards');
   const cardsCollection = document.querySelectorAll('.card');
   let playingClass = 'card_playing';
   let cardFooterPlayModeClass = 'card__footer_play-mode';
+  const startButton = document.querySelector('.button_start-game');
 
   const CARDS_CATEGORY_LENGTH = cards[index].length;
 
-  if (gameMode.trainingMode) {
+  if (statesObj.trainingMode) {
     playingClass = '';
     cardFooterPlayModeClass = '';
   } else {
+    startButton.classList.remove('button_training-mode');
     playingClass = 'card_playing';
     cardFooterPlayModeClass = 'card__footer_play-mode';
   }
@@ -40,15 +41,4 @@ export default function renderCards(index = 0) {
         </div>
       </figure>`;
   }
-
-  const cardsHandler = (event) => {
-    event.preventDefault();
-  };
-
-  cardsElement.addEventListener('click', cardsHandler);
-
-  const rotateButtons = document.querySelectorAll('.rotate-button');
-  rotateButtons.forEach((button) => {
-    button.addEventListener('click', rotateCard);
-  });
 }

@@ -1,7 +1,5 @@
-export default function (event) {
-  event.preventDefault();
-
-  const back = event.target.closest('.card__back');
+export default function (target) {
+  const back = target.closest('.card__back');
   const front = back.nextElementSibling;
 
   const rotateHandler = () => {

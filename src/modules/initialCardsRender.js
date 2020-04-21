@@ -1,5 +1,5 @@
 import cards from './cards';
-import gameMode from './isTrainingMode';
+import gameMode from './statesObj';
 
 export default function initialCardsRender() {
   const CARD_CATEGORIES = cards[0];
