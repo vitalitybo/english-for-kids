@@ -1,6 +1,6 @@
 import renderCards from './renderCards';
-import initialCardsRender from './initialCardsRender';
-import statesObj from './statesObj';
+// import initialCardsRender from './initialCardsRender';
+import { states } from './statesObj';
 
 export default function startGame(event) {
   event.preventDefault();
@@ -12,15 +12,15 @@ export default function startGame(event) {
   if (target) {
     const cardsCollection = document.querySelectorAll('.card_main-page');
     const index = Array.from(cardsCollection).indexOf(target);
-    statesObj.targetCollection = index + 1;
+    states.targetCollection = index + 1;
 
     renderCards(index + 1);
   }
 
   const toMainButton = document.querySelector('.button_to-main-page');
-  const startButton = document.querySelector('.button_start-game');
+  // const startButton = document.querySelector('.button_start-game');
   toMainButton.hidden = false;
-
+/*
   const toMainHandler = () => {
     initialCardsRender();
     toMainButton.hidden = true;
@@ -29,5 +29,5 @@ export default function startGame(event) {
     toMainButton.removeEventListener('click', toMainHandler);
   };
 
-  toMainButton.addEventListener('click', toMainHandler);
+  toMainButton.addEventListener('click', toMainHandler); */
 }

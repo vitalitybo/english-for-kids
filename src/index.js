@@ -1,16 +1,14 @@
 import './styles/styles.css';
 import initialCardsRender from './modules/initialCardsRender';
-import setPlayGamePage from './modules/setPlayGamePage';
 import switchMode from './modules/switchMode';
-import cardsClickHandler from './modules/cardsClickHandler';
 import startGame from './modules/startGame';
+import toMainHandler from './modules/toMainHandler';
 
 
 initialCardsRender();
 
-const cardsElement = document.querySelector('.cards');
-cardsElement.addEventListener('click', setPlayGamePage);
-cardsElement.addEventListener('click', cardsClickHandler);
+const toMainButton = document.querySelector('.button_to-main-page');
+toMainButton.addEventListener('click', toMainHandler);
 
 const gameModeButton = document.querySelector('.button_game-mode');
 gameModeButton.addEventListener('click', switchMode);

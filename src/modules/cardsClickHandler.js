@@ -1,6 +1,6 @@
 import rotateCard from './rotateCard';
 import cards from './cards';
-import statesObj from './statesObj';
+import { states } from './statesObj';
 
 
 const cardsClickHandler = (event) => {
@@ -14,8 +14,8 @@ const cardsClickHandler = (event) => {
   if (targetRotateButton) {
     rotateCard(targetRotateButton);
   } else if (target) {
-    if (!statesObj.locked) {
-      new Audio(`./assets/${cards[statesObj.targetCollection][k].audioSrc}`).play();
+    if (!states.locked) {
+      new Audio(`./assets/${cards[states.targetCollection][k].audioSrc}`).play();
     }
   }
 };

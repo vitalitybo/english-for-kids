@@ -1,15 +1,15 @@
-import statesObj from './statesObj';
+import { states } from './statesObj';
 
 export default function switchMode() {
   const playCardsFooter = document.querySelectorAll('.card__footer');
   const cardsCollection = document.querySelectorAll('.card');
   const startButton = document.querySelector('.button_start-game');
 
-  statesObj.trainingMode = !statesObj.trainingMode;
+  states.trainingMode = !states.trainingMode;
 
-  console.log(statesObj.trainingMode);
+  console.log(states.trainingMode);
   if (playCardsFooter.length) {
-    if (!statesObj.trainingMode) {
+    if (!states.trainingMode) {
       playCardsFooter.forEach((card) => card.classList.add('card__footer_play-mode'));
 
       cardsCollection.forEach((card) => {
@@ -26,11 +26,11 @@ export default function switchMode() {
     }
   }
 
-  if (statesObj.trainingMode) {
-    statesObj.locked = false;
+  if (states.trainingMode) {
+    states.locked = false;
     document.querySelectorAll('.card_main-page').forEach((card) => card.classList.remove('card_main-page_play-mode'));
   } else {
-    statesObj.locked = true;
+    states.locked = true;
     document.querySelectorAll('.card_main-page').forEach((card) => card.classList.add('card_main-page_play-mode'));
   }
 }

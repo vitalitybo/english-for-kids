@@ -1,18 +1,34 @@
 import cards from './cards';
-import gameMode from './statesObj';
+import { states } from './statesObj';
+import cardsClickHandler from './cardsClickHandler';
+import setPlayGamePage from './setPlayGamePage';
+
 
 export default function initialCardsRender() {
   const CARD_CATEGORIES = cards[0];
 
-  const cardsElement = document.querySelector('.cards');
+  if (document.querySelector('.cards')) {
+    document.querySelector('.cards').remove();
+  }
+
+  const cardsElement = document.createElement('section');
+  cardsElement.classList.add('cards');
+  document.querySelector('.button__container').before(cardsElement);
+  cardsElement.addEventListener('click', setPlayGamePage);
+  cardsElement.addEventListener('click', cardsClickHandler);
+
   const cardsCollection = Array.from(document.querySelectorAll('.card'));
   let gameModeClass = '';
+
+  if (document.querySelector('.stars-block')) {
+    document.querySelector('.stars-block').remove();
+  }
 
   if (cardsCollection.length) {
     cardsCollection.forEach((item) => item.remove());
   }
 
-  if (!gameMode.trainingMode) {
+  if (!states.trainingMode) {
     gameModeClass = 'card_main-page_play-mode';
   }
 

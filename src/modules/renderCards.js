@@ -1,5 +1,5 @@
 import cards from './cards';
-import statesObj from './statesObj';
+import { states } from './statesObj';
 
 export default function renderCards(index = 0) {
   const cardsElement = document.querySelector('.cards');
@@ -10,7 +10,7 @@ export default function renderCards(index = 0) {
 
   const CARDS_CATEGORY_LENGTH = cards[index].length;
 
-  if (statesObj.trainingMode) {
+  if (states.trainingMode) {
     playingClass = '';
     cardFooterPlayModeClass = '';
   } else {

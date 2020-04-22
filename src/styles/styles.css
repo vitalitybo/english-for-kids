@@ -1,22 +1,25 @@
 .main {
+  position: relative;
+  max-width: 1400px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .cards {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   min-width: 320px;
-  margin: 20px auto;
-  padding: 0;
+  margin: 0 auto 20px;
+  padding: 90px 0 0 0;
 }
 
 .card {
   position: relative;
   display: inline-block;
   margin: 20px 20px;
-  width: 330px;
-  height: 260px;
+  width: 310px;
+  height: 255px;
   text-align: center;
   border-radius: 5px;
   background-position-y: -125px;
@@ -25,8 +28,8 @@
 }
 
 .card_playing {
-  width: 350px;
-  height: 233px;
+  width: 310px;
+  height: 207px;
 }
 
 .card_playing .rotate-button {
@@ -147,7 +150,7 @@
 }
 
 .button_to-main-page, .button_start-game {
-  margin: 15px 0 0 35px;
+  margin: 35px 0 0 35px;
   width: 300px;
   height: 40px;
 }
@@ -169,15 +172,15 @@
 
 .button_game-mode {
   position: absolute;
-  top: 15px;
+  top: 35px;
   right: 15px;
 }
 
 .toggle-button {
   position: relative;
   top: 50%;
-  width: 74px;
-  height: 36px;
+  width: 130px;
+  height: 43px;
   overflow: hidden;
 }
 
@@ -210,13 +213,13 @@
 .toggle-button .knobs:before, .toggle-button .knobs:after {
   position: absolute;
   top: 4px;
-  left: 4px;
-  width: 58px;
-  height: 10px;
+  left: 10px;
+  width: 102px;
+  height: 18px;
   color: #fff;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  font-size: 1em;
+  font-size: 1.5em;
   text-transform: uppercase;
   text-align: center;
   line-height: 0.8em;
@@ -235,14 +238,14 @@
 }
 
 .toggle-button .knobs:after {
-  top: -28px;
-  right: 4px;
+  top: -36px;
+  right: 11px;
   left: auto;
   background-color: #F44336;
 }
 
 .game-mode_checkbox:checked+.knobs:before {
-  top: -28px;
+  top: -36px;
 }
 
 .game-mode_checkbox:checked+.knobs:after {
@@ -261,5 +264,64 @@
   top: 0;
   left: 0;
   background-color: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
+.star {
+  position: absolute;
+  display: inline-block;
+  right: 0;
+  width: 57px;
+  height: 57px;
+}
+
+.stars-block {
+  position: absolute;
+  top: 95px;
+  width: 100%;
+  height: 57px;
+}
+
+.star_correct {
+  background: url(/../assets/img/star-win.svg) no-repeat;
+}
+
+.star_incorrect {
+  background: url(/../assets/img/star.svg) no-repeat;
+}
+
+.result {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.result-image_failure {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff url(/../assets/img/failure.jpg) no-repeat center;
+}
+
+.result-image_win {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff url(/../assets/img/success.jpg) no-repeat center;
+}
+
+.result-statistic {
+  position: relative;
+  top: 5%;
+  color: #1465cf;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1.8em;
   z-index: 1;
 }
