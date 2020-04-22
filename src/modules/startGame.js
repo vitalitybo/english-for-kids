@@ -4,14 +4,18 @@ import addStar from './addStar';
 import initialCardsRender from './initialCardsRender';
 
 export default function startGame() {
+  if (!states.started) {
+    states.started = true;
+  } else {
+    return;
+  }
+
   const correctAnswerAudio = new Audio('./assets/audio/correct.mp3');
   const errorAnswerAudio = new Audio('./assets/audio/error.mp3');
 
   const starsBlock = document.createElement('div');
   starsBlock.classList.add('stars-block');
   document.querySelector('.main').prepend(starsBlock);
-
-  if (!states.started) states.started = true;
 
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i -= 1) {
@@ -66,6 +70,13 @@ export default function startGame() {
     toMainButton.hidden = true;
 
     initialCardsRender();
+
+    const startGameButton = document.querySelector('.button_start-game');
+    startGameButton.addEventListener('click', startGame);
+
+    states.started = false;
+    statistic.correctAnswersCount = 0;
+    statistic.incorrectAnswersCount = 0;
 
     setTimeout(() => {
       result.remove();

@@ -9,5 +9,5 @@ export default function toMainHandler() {
   toMainButton.hidden = true;
   startButton.classList.add('button_training-mode');
 
-  toMainButton.removeEventListener('click', toMainHandler);
+  // toMainButton.removeEventListener('click', toMainHandler);
 }
