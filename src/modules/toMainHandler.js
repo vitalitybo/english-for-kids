@@ -8,6 +8,5 @@ export default function toMainHandler() {
   initialCardsRender();
   toMainButton.hidden = true;
   startButton.classList.add('button_training-mode');
-
   // toMainButton.removeEventListener('click', toMainHandler);
 }

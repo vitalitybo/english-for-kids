@@ -1,28 +1,37 @@
 import cards from './cards';
 import { states } from './statesObj';
-import cardsClickHandler from './cardsClickHandler';
+// import cardsClickHandler from './cardsClickHandler';
 import setPlayGamePage from './setPlayGamePage';
+import wipeCurrentProgress from './wipeCurrentProgress';
+import createCardsSection from './createCardsSection';
 
 
 export default function initialCardsRender() {
+  if (document.querySelector('.card_main-page')) return;
+  wipeCurrentProgress();
+
   const CARD_CATEGORIES = cards[0];
 
   if (document.querySelector('.cards')) {
     document.querySelector('.cards').remove();
   }
 
-  const cardsElement = document.createElement('section');
-  cardsElement.classList.add('cards');
-  document.querySelector('.button__container').before(cardsElement);
+  createCardsSection();
+  const cardsElement = document.querySelector('.cards');
   cardsElement.addEventListener('click', setPlayGamePage);
-  cardsElement.addEventListener('click', cardsClickHandler);
+
+  // const cardsElement = document.createElement('section');
+  // cardsElement.classList.add('cards');
+  // document.querySelector('.main').prepend(cardsElement);
+  // cardsElement.addEventListener('click', setPlayGamePage);
+  // cardsElement.addEventListener('click', cardsClickHandler);
 
   const cardsCollection = Array.from(document.querySelectorAll('.card'));
   let gameModeClass = '';
 
-  if (document.querySelector('.stars-block')) {
-    document.querySelector('.stars-block').remove();
-  }
+  // if (document.querySelector('.stars-block')) {
+  //   document.querySelector('.stars-block').remove();
+  // }
 
   if (cardsCollection.length) {
     cardsCollection.forEach((item) => item.remove());
@@ -39,4 +48,7 @@ export default function initialCardsRender() {
         <figcaption class="card__title">${cards[0][i]}</figcaption>
       </figure>`;
   }
+
+  const toMainButton = document.querySelector('.button_to-main-page');
+  toMainButton.hidden = true;
 }

@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <main class="main">
+  <header class="header">
     <button class="button button_to-main-page" hidden>Back to categories</button>
     <div class="button_game-mode">
       <div class="toggle-button r">
@@ -20,7 +20,22 @@
         <div class="layer"></div>
       </div>
     </div>
-
+    <aside class="sidebar">
+      <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+      <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner diagonal part-1"></div>
+        <div class="spinner horizontal"></div>
+        <div class="spinner diagonal part-2"></div>
+      </label>
+      <div id="sidebarMenu">
+        <ul class="sidebarMenuInner">
+          <li>Main page</li>
+          <li><a href="">Statistic</a></li>
+        </ul>
+      </div>
+    </aside>
+  </header>
+  <main class="main">
     <section class="cards">
     </section>
     <div class="button__container">

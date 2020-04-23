@@ -16,9 +16,9 @@ export default function setPlayGamePage(event) {
     renderCards(index + 1);
   }
 
-  const toMainButton = document.querySelector('.button_to-main-page');
+  // const toMainButton = document.querySelector('.button_to-main-page');
   // const startButton = document.querySelector('.button_start-game');
-  toMainButton.hidden = false;
+  // toMainButton.hidden = false;
   /*
     const toMainHandler = () => {
       initialCardsRender();

@@ -6,6 +6,7 @@ export default function switchMode() {
   const startButton = document.querySelector('.button_start-game');
 
   states.trainingMode = !states.trainingMode;
+  states.started = false;
 
   console.log(states.trainingMode);
   if (playCardsFooter.length) {

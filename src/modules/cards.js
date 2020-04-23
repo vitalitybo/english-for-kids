@@ -1,5 +1,5 @@
 const cards = [
-  ['Action (set A)', 'Action (set B)', 'Animal (set A)', 'Animal (set B)', 'Clothes', 'Emotions'],
+  ['Action (set A)', 'Action (set B)', 'Animal (set A)', 'Animal (set B)', 'Clothes', 'Emotions', 'Food (set A)', 'Food (set B)'],
   [
     {
       word: 'cry',
@@ -298,6 +298,106 @@ const cards = [
       translation: 'смех',
       image: 'img/laugh.jpg',
       audioSrc: 'audio/laugh.mp3',
+    },
+  ],
+  [
+    {
+      word: 'banana',
+      translation: 'банан',
+      image: 'img/banana.jpg',
+      audioSrc: 'audio/banana.mp3',
+    },
+    {
+      word: 'onion',
+      translation: 'лук',
+      image: 'img/onion.jpg',
+      audioSrc: 'audio/onion.mp3',
+    },
+    {
+      word: 'bread',
+      translation: 'хлеб',
+      image: 'img/bread.jpg',
+      audioSrc: 'audio/bread.mp3',
+    },
+    {
+      word: 'spaghetti',
+      translation: 'спагетти',
+      image: 'img/spaghetti.jpg',
+      audioSrc: 'audio/spaghetti.mp3',
+    },
+    {
+      word: 'orange',
+      translation: 'апельсин',
+      image: 'img/orange.jpg',
+      audioSrc: 'audio/orange.mp3',
+    },
+    {
+      word: 'pancake',
+      translation: 'блин',
+      image: 'img/pancake.jpg',
+      audioSrc: 'audio/pancake.mp3',
+    },
+    {
+      word: 'cutlet',
+      translation: 'котлета',
+      image: 'img/cutlet.jpg',
+      audioSrc: 'audio/cutlet.mp3',
+    },
+    {
+      word: 'tea',
+      translation: 'чай',
+      image: 'img/tea.jpg',
+      audioSrc: 'audio/tea.mp3',
+    },
+  ],
+  [
+    {
+      word: 'avocado',
+      translation: 'авокадо',
+      image: 'img/avocado.jpg',
+      audioSrc: 'audio/avocado.mp3',
+    },
+    {
+      word: 'milk',
+      translation: 'молоко',
+      image: 'img/milk.jpg',
+      audioSrc: 'audio/milk.mp3',
+    },
+    {
+      word: 'potato',
+      translation: 'картофель',
+      image: 'img/potato.jpg',
+      audioSrc: 'audio/potato.mp3',
+    },
+    {
+      word: 'cake',
+      translation: 'торт',
+      image: 'img/cake.jpg',
+      audioSrc: 'audio/cake.mp3',
+    },
+    {
+      word: 'tomato',
+      translation: 'помидор',
+      image: 'img/tomato.jpg',
+      audioSrc: 'audio/tomato.mp3',
+    },
+    {
+      word: 'meat',
+      translation: 'мясо',
+      image: 'img/meat.jpg',
+      audioSrc: 'audio/meat.mp3',
+    },
+    {
+      word: 'hamburger',
+      translation: 'гамбургер',
+      image: 'img/hamburger.jpg',
+      audioSrc: 'audio/hamburger.mp3',
+    },
+    {
+      word: 'soup',
+      translation: 'суп',
+      image: 'img/soup.jpg',
+      audioSrc: 'audio/soup.mp3',
     },
   ],
 ];
