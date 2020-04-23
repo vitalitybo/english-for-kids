@@ -1,16 +1,154 @@
+body {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
 .main {
   position: relative;
-  max-width: 1400px;
+  width: 100%;
   margin: 0 auto;
   overflow: hidden;
 }
+
+.header {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1400px;
+  box-shadow: none;
+  background-color: #FC466B;
+  position: fixed;
+  height: 60px!important;
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* Sidebar menu */
+
+#sidebarMenu {
+  height: 100%;
+  position: fixed;
+  left: 0;
+  width: 250px;
+  transform: translateX(-250px);
+  transition: transform 250ms ease-in-out;
+  background: linear-gradient(180deg, #FC466B 0%, #3F5EFB 100%);
+}
+
+.sidebarMenuInner {
+  margin-top: 60px;
+  padding: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.sidebarMenuInner li {
+  list-style: none;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 20px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.sidebarMenuInner li span {
+  display: block;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.50);
+}
+
+.sidebarMenuInner li a {
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.openSidebarMenu:checked~#sidebarMenu {
+  transform: translateX(0);
+}
+
+.openSidebarMenu {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  display: none;
+}
+
+.sidebarIconToggle {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: absolute;
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+  top: 22px;
+  left: 15px;
+  height: 22px;
+  width: 22px;
+}
+
+.spinner {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+}
+
+.horizontal {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  position: relative;
+  float: left;
+  margin-top: 3px;
+}
+
+.diagonal.part-1 {
+  position: relative;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  float: left;
+}
+
+.diagonal.part-2 {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  position: relative;
+  float: left;
+  margin-top: 3px;
+}
+
+.openSidebarMenu:checked~.sidebarIconToggle>.horizontal {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  opacity: 0;
+}
+
+.openSidebarMenu:checked~.sidebarIconToggle>.diagonal.part-1 {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  transform: rotate(135deg);
+  margin-top: 8px;
+}
+
+.openSidebarMenu:checked~.sidebarIconToggle>.diagonal.part-2 {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  transform: rotate(-135deg);
+  margin-top: -9px;
+}
+
+/* Cards page */
 
 .cards {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   min-width: 320px;
-  margin: 0 auto 20px;
+  margin: 60px auto 20px;
   padding: 90px 0 0 0;
 }
 
@@ -39,12 +177,13 @@
 .card_main-page {
   height: 310px;
   box-shadow: 0 5px 10px -5px #010101;
-  background-image: linear-gradient(90deg, #63e2ff, #63e2ff);
+  background-image: linear-gradient(180deg, #63e2ff, #FC466B);
 }
 
 .card_main-page_play-mode {
-  background-image: linear-gradient(0deg, #F44336, #F44336);
-  box-shadow: 0 5px 20px -5px #010101;
+  /* background-image: linear-gradient(0deg, #51dd19, #51dd19); */
+  background-image: linear-gradient(180deg, #51dd19 0%, #f3f722 100%);
+  /* box-shadow: 0 5px 20px -5px #010101; */
 }
 
 .card:hover {
@@ -150,8 +289,8 @@
 }
 
 .button_to-main-page, .button_start-game {
-  margin: 35px 0 0 35px;
-  width: 300px;
+  /* margin: 35px 0 0 35px; */
+  width: 280px;
   height: 40px;
 }
 
@@ -170,10 +309,20 @@
   box-shadow: 0 1px 3px #949494;
 }
 
+/* .button_game-mode {
+  box-shadow: 0 1px 3px #949494;
+} */
+
 .button_game-mode {
   position: absolute;
-  top: 35px;
+  top: 8px;
   right: 15px;
+}
+
+.button_to-main-page {
+  position: absolute;
+  top: 10px;
+  left: 55px;
 }
 
 .toggle-button {
@@ -241,7 +390,7 @@
   top: -36px;
   right: 11px;
   left: auto;
-  background-color: #F44336;
+  background-color: #51dd19;
 }
 
 .game-mode_checkbox:checked+.knobs:before {
@@ -298,6 +447,7 @@
   width: 100%;
   height: 100%;
   text-align: center;
+  z-index: 100;
 }
 
 .result-image_failure {
