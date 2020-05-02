@@ -51,6 +51,11 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
 
+.sidebarMenuInner li:hover {
+  border-top: 1px solid rgba(203, 245, 19, 0.884);
+  border-bottom: 1px solid rgba(203, 245, 19, 0.884);
+}
+
 .sidebarMenuInner li span {
   display: block;
   font-size: 14px;
@@ -176,8 +181,12 @@ body {
 
 .card_main-page {
   height: 310px;
-  box-shadow: 0 5px 10px -5px #010101;
+  box-shadow: 0 5px 10px -5px #076ac7;
   background-image: linear-gradient(180deg, #63e2ff, #FC466B);
+}
+
+.card_main-page:hover {
+  box-shadow: 0 5px 30px -3px #b35151;
 }
 
 .card_main-page_play-mode {
@@ -209,13 +218,23 @@ body {
   height: auto;
 }
 
-.card__image_main-page {
+.card__image-wrapper {
   width: 200px;
   height: 200px;
-  display: block;
   margin: 20px auto;
+  overflow: hidden;
   border: 10px solid white;
   border-radius: 50%;
+}
+
+.card__image_main-page {
+  width: auto;
+  height: 100%;
+  margin-left: -50px;
+  /* display: block;
+  margin: 20px auto;
+  border: 10px solid white;
+  border-radius: 50%; */
 }
 
 .card__front, .card__back {
@@ -229,7 +248,13 @@ body {
   text-transform: uppercase;
   -webkit-backface-visibility: hidden;
   transition: transform .5s ease;
-  box-shadow: 0 5px 10px -5px #010101;
+  box-shadow: 0 5px 10px -5px #076ac7;
+}
+
+.card__front:hover,
+.card__back:hover {
+  transition: .5s ease;
+  box-shadow: 0 5px 30px -3px #b35151;
 }
 
 .card__front {
@@ -256,7 +281,7 @@ body {
   display: inline-block;
   position: absolute;
   right: 10px;
-  bottom: 5px;
+  bottom: 10px;
   border: none;
   width: 30px;
   height: 30px;
@@ -292,6 +317,26 @@ body {
   /* margin: 35px 0 0 35px; */
   width: 280px;
   height: 40px;
+  transition: .7s ease-out;
+}
+
+.button_start-game::before {
+  content: 'Start game';
+}
+
+.button_start-game-repeat::before {
+  content: '';
+  background-image: url(/../assets/img/repeat.svg);
+  background-size: 35px 38px;
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  z-index: 1;
+}
+
+.button_start-game-repeat {
+  transition: .5s ease-in-out;
+  width: 60px;
 }
 
 .button__container {
@@ -304,7 +349,7 @@ body {
   display: none;
 }
 
-.button_to-main-page:hover {
+.button:hover {
   background-color: #fff349;
   box-shadow: 0 1px 3px #949494;
 }
@@ -474,4 +519,12 @@ body {
   font-weight: 600;
   font-size: 1.8em;
   z-index: 1;
+}
+
+.cards-blocker {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
 }

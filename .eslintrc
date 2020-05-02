@@ -15,11 +15,13 @@
           ["@modules", ".src/modules/"]
         ]
       }
-    }
+    },
+    "import/no-cycle": 0
   },
   "rules": {
     "linebreak-style": 0,
-    "no-param-reassign": 0
+    "no-param-reassign": 0,
+    "import/no-cycle": 0
   },
   "parserOptions": {
     "sourceType": "module",

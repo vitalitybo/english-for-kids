@@ -3,6 +3,8 @@ export const states = {
   locked: false,
   targetCollection: null,
   started: false,
+  isCheckListenerOn: false,
+  isRestarted: false,
 };
 
 export const statistic = {

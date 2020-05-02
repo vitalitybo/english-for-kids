@@ -2,9 +2,11 @@ import { states, statistic } from './statesObj';
 import cards from './cards';
 import addStar from './addStar';
 import initialCardsRender from './initialCardsRender';
+import wipeCurrentProgress from './wipeCurrentProgress';
 
 export default function startGame() {
   if (!states.started) {
+    wipeCurrentProgress();
     states.started = true;
   } else {
     return;
@@ -12,10 +14,6 @@ export default function startGame() {
 
   const correctAnswerAudio = new Audio('./assets/audio/correct.mp3');
   const errorAnswerAudio = new Audio('./assets/audio/error.mp3');
-
-  const starsBlock = document.createElement('div');
-  starsBlock.classList.add('stars-block');
-  document.querySelector('.main').prepend(starsBlock);
 
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i -= 1) {
@@ -25,9 +23,11 @@ export default function startGame() {
     return array;
   };
 
-  const currentCollection = shuffleArray(cards[states.targetCollection].slice(0));
+  const { targetCollection } = states;
+  const currentCollection = shuffleArray(cards[targetCollection].slice(0));
 
   const playSound = () => {
+    if (targetCollection !== states.targetCollection) return;
     setTimeout(() => {
       new Audio(`./assets/${currentCollection[currentCollection.length - 1].audioSrc}`).play();
     }, 300);
@@ -61,7 +61,7 @@ export default function startGame() {
       new Audio('./assets/audio/success.mp3').play();
     }
 
-    document.querySelector('.button_start-game').classList.add('button_training-mode');
+    document.querySelector('.button__container').classList.add('button_training-mode');
     document.querySelector('.main').append(result);
     result.append(resultStatistic);
     result.append(resultImage);
@@ -84,6 +84,13 @@ export default function startGame() {
   };
 
   const checkCard = (event) => {
+    if (states.isRestarted) {
+      document.querySelector('.cards').removeEventListener('click', checkCard);
+      // wipeCurrentProgress();
+      states.isRestarted = false;
+      return;
+    }
+
     const targetImage = event.target.closest('.card__image');
 
     if (targetImage) {
@@ -111,7 +118,30 @@ export default function startGame() {
     }
   };
 
+  // const restart = () => {
+  //   wipeCurrentProgress();
+  //   document.querySelector('.cards').removeEventListener('click', checkCard);
+  // };
+
   playSound();
-  document.querySelector('.button_start-game').removeEventListener('click', startGame);
+
+
+  // if (states.isRestarted) {
+  //   wipeCurrentProgress();
+  //   states.isRestarted = false;
+  //   states.isCheckListenerOn = true;
+  // }
+
+  const starsBlock = document.createElement('div');
+  starsBlock.classList.add('stars-block');
+  document.querySelector('.main').prepend(starsBlock);
+
+  // const cardsBlocker = document.createElement('div');
+  // cardsBlocker.classList.add('cards-blocker');
+
+  // document.querySelector('.cards').prepend(cardsBlocker);
+
+  document.querySelector('.button_start-game').classList.add('button_start-game-repeat');
+  document.querySelector('.button_start-game').addEventListener('click', playSound);
   document.querySelector('.cards').addEventListener('click', checkCard);
 }

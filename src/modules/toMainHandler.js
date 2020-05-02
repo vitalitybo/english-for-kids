@@ -2,7 +2,7 @@ import initialCardsRender from './initialCardsRender';
 
 
 export default function toMainHandler() {
-  const startButton = document.querySelector('.button_start-game');
+  const startButton = document.querySelector('.button__container');
   const toMainButton = document.querySelector('.button_to-main-page');
 
   initialCardsRender();

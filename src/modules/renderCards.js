@@ -2,9 +2,11 @@ import cards from './cards';
 import { states } from './statesObj';
 import wipeCurrentProgress from './wipeCurrentProgress';
 import createCardsSection from './createCardsSection';
+import startGame from './startGame';
 
 export default function renderCards(index = 0) {
   wipeCurrentProgress();
+  states.started = false;
 
   if (document.querySelector('.cards')) {
     document.querySelector('.cards').remove();
@@ -16,12 +18,14 @@ export default function renderCards(index = 0) {
   // const cardsCollection = document.querySelectorAll('.card');
   let playingClass = 'card_playing';
   let cardFooterPlayModeClass = 'card__footer_play-mode';
-  const startButton = document.querySelector('.button_start-game');
-
+  const startButton = document.querySelector('.button__container');
   const CARDS_CATEGORY_LENGTH = cards[index].length;
-
   const toMainButton = document.querySelector('.button_to-main-page');
+
+  document.querySelector('.button_start-game').addEventListener('click', startGame);
+
   toMainButton.hidden = false;
+  states.targetCollection = index;
 
   if (states.trainingMode) {
     playingClass = '';
@@ -31,10 +35,6 @@ export default function renderCards(index = 0) {
     playingClass = 'card_playing';
     cardFooterPlayModeClass = 'card__footer_play-mode';
   }
-
-  // if (cardsCollection.length) {
-  //   cardsCollection.forEach((item) => item.remove());
-  // }
 
 
   for (let i = 0; i < CARDS_CATEGORY_LENGTH; i += 1) {
